@@ -9,12 +9,12 @@
 ////////// PROBLEM 1 //////////
 
 // Do not edit the code below.
-function outer() {
-  var name = 'Tyler';
-  return function() {
-    return 'The original name was ' + name;
-  };
-}
+   function outer(){
+     var name = 'Tyler';
+     return function(){
+       return 'The original name was ' + name;
+     };
+   }
 // Do not edit the code above.
   
 /* 
@@ -23,7 +23,7 @@ function outer() {
 */
   
 // Code Here
-let inner = outer()
+let inner = outer();
 
 
 
@@ -31,6 +31,7 @@ let inner = outer()
 //Once you do that, invoke inner.
 
 //Code Here
+inner();
 
 
 
@@ -56,6 +57,7 @@ function callFriend(name) {
 //Code Here
 let callJake = callFriend('Jake')
 callJake('435-555-9248')
+// callJake.dial(435-555-9248)
 
 
 ////////// PROBLEM 3 //////////
@@ -65,13 +67,21 @@ callJake('435-555-9248')
 */
 
 //Code Here
-const makeCounter = () => {
+function makeCounter(){
   let num = 0
   function increase(){
-    return ++num
+    return num += 1
   }
   return increase;
 }
+
+// const makeCounter = () => {
+//   let num = 0
+//   function increase(){
+//     return ++num
+//   }
+//   return increase;
+// }
 
 
 //Uncomment this once you make your function
@@ -94,22 +104,46 @@ const makeCounter = () => {
   http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-example?answertab=votes#tab-top
 */
 
-function counterFactory(value) {
-  // Code here.
-  let val = value
+function counterFactory(value){
   function inc(){
-    return ++val
+    return value += 1
   };
-
   function dec(){
-    return --val
+    return value -= 1
   };
-
   return {
-      inc,
-      dec
+    inc,
+    dec
   };
-};
+}
+
+// function counterFactory(value){
+//   return {
+//     inc: function(){
+//       return value += 1;
+//     },
+//     dec: function(){
+//       return value -= 1;
+//     }
+//   }
+// }
+
+// function counterFactory(value) {
+//   // Code here.
+//   let val = value
+//   function inc(){
+//     return ++val
+//   };
+
+//   function dec(){
+//     return --val
+//   };
+
+//   return {
+//       inc,
+//       dec
+//   };
+// };
 
 counter = counterFactory(10);
 counter.inc() // 11
@@ -170,6 +204,8 @@ var module = (function() {
     }
   };
 })();
+
+module.publicMethod();
 
 
 

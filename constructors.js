@@ -15,9 +15,14 @@
 */
 
 // Code here
+// function CarFactory(make, model){
+//   this.make = make
+//   this.model = model
+// }
+
 function CarFactory(make, model){
-  this.make = make
-  this.model = model
+  this.make = make;
+  this.model = model;
 }
 
 ////////// PROBLEM 2 //////////
@@ -62,21 +67,35 @@ mustang.moveCar(); // Increments mustang' move property by 10. Returns the new m
 */
 
 // Code here
-function Car(make, model, year){
-  this.move = 0
-  this.make = make
-  this.model = model
-  this.year = year
 
-  function moveCar(){
-    this.move += 10
-    return this.move
-  }
+function Car(make, model, year){
+  this.move = 0;
+  this.make = make;
+  this.model = model;
+  this.year = year;
 
   return {
-    moveCar
+    moveCar: function(){
+      return this.move += 10;
+    }
   }
 }
+
+// function Car(make, model, year){
+//   this.move = 0
+//   this.make = make
+//   this.model = model
+//   this.year = year
+
+//   function moveCar(){
+//     this.move += 10
+//     return this.move
+//   }
+
+//   return {
+//     moveCar
+//   }
+// }
 
 ////////// PROBLEM 4 //////////
 
@@ -96,10 +115,22 @@ function Movie(name, genre, rating) {
 }
 
 // Code here
-Movie.prototype.changeRating = function(rating){
-  this.rating = (this.rating + rating)/2
-  return this.rating
+
+// Movie.prototype.changeRating = function(number){
+//   number /2
+//   return number
+// }
+
+// Movie.prototype.changeRating = function(rating){
+//   this.rating = (this.rating + rating)/2
+//   return this.rating
+// }
+
+Movie.prototype.changeRating = function(number){
+  return (number + this.rating)/2
 }
+
+
 
 ////////// PROBLEM 5 //////////
 
@@ -125,11 +156,16 @@ User.prototype.addSavedPost = function(id, title, rating){
 // Write a prototype method for the User constructor function named removeSavedPost that will take in one number parameter representing the post id. Use this id to find and remove the matching object in the savedPosts array.
 
 // Code here
+// User.prototype.removeSavedPost = function(id){
+//   let index = this.savedPosts.map((post, index) =>{
+//     if(post.id === id)return index
+//   })
+//   this.savedPosts = this.savedPosts.splice(index, 1)
+// }
+
 User.prototype.removeSavedPost = function(id){
-  let index = this.savedPosts.map((post, index) =>{
-    if(post.id === id)return index
-  })
-  this.savedPosts = this.savedPosts.splice(index, 1)
+let index = this.savedPosts.findIndex(e => e.id === id)
+this.savedPosts.splice(index, 1)
 }
 
 ////////// PROBLEM 7 //////////
